@@ -34,7 +34,7 @@ class FccPhysics(CMakePackage):
 
     version('0.1.1', '8136978e23b5b9438646868f8e81d037')
     version('0.1', '89e4f57d0dc9335e2ad6ed796c5e2600')
-    version('develop', git='https://github.com/HEP-FCC/fcc-physics.git', branch='master')
+    version('develop', git='https://github.com/jlingema/fcc-physics.git', branch='master')
 
     depends_on('cmake', type='build')
     depends_on('fcc-edm')

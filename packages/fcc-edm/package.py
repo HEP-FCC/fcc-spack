@@ -38,7 +38,7 @@ class FccEdm(CMakePackage):
     version('0.2.2', '14ab88993995311f45e6927228fb8738')
     version('0.2.1', 'c68d0ab3c07d7f5c885b6d2be7a3be74')
     version('0.2', 'fe014e238e8afc76523f2e1ada9bc087')
-    version('develop', git='https://github.com/HEP-FCC/fcc-edm.git', branch='master')
+    version('develop', git='https://github.com/jlingema/fcc-edm.git', branch='master')
 
     depends_on('cmake', type='build')
     depends_on('podio')
