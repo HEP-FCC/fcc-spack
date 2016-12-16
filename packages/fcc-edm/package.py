@@ -41,6 +41,7 @@ class FccEdm(CMakePackage):
     version('develop', git='https://github.com/jlingema/fcc-edm.git', branch='master')
 
     depends_on('cmake', type='build')
+    depends_on('root')
     depends_on('podio')
 
     def configure_args(self):
