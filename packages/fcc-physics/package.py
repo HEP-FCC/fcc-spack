@@ -32,21 +32,21 @@ class FccPhysics(CMakePackage):
     homepage = "https://github.com/HEP-FCC/fcc-physics/"
     url      = "https://github.com/HEP-FCC/fcc-physics/archive/v0.1.tar.gz"
 
+    version('0.2.1', '93aeb48160d8fc5ae18e3568dd4f34b4', preferred=True)
     version('0.1.1', '8136978e23b5b9438646868f8e81d037')
     version('0.1', '89e4f57d0dc9335e2ad6ed796c5e2600')
-    version('develop', git='https://github.com/jlingema/fcc-physics.git', branch='master')
+    version('develop', git='https://github.com/HEP-FCC/fcc-physics.git', branch='master')
+
+    variant('build_type', default='Release',
+            description='The build type to build',
+            values=('Debug', 'Release'))
 
     depends_on('cmake', type='build')
     depends_on('fcc-edm')
+    depends_on('podio')
     depends_on('hepmc')
     depends_on('pythia')
     depends_on('fastjet')
-
-    def configure_args(self):
-        spec = self.spec
-        return [
-            '-DCMAKE_BUILD_TYPE:STRING=%s' ('Debug' if '+debug' in spec else 'Release')
-        ]
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCPHYSICS', self.prefix)
