@@ -29,10 +29,11 @@ from spack import *
 class FccEdm(CMakePackage):
     """Event data model of FCC"""
 
-    # FIXME: Add a proper url for your package's homepage here.
-    homepage = "http://www.example.com"
-    url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.4.tar.gz"
+    homepage = "https://github.com/HEP-FCC/fcc-edm"
+    url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.5.1.tar.gz"
 
+    version('0.5.1', '99aea85185a2afdf1f4eb6c24e7d9e74')
+    version('0.5', '8ddae2d96d61f79ef113cc1e2e197189')
     version('0.4', '6c9f4d42bac4e55797e5e0f126290796')
     version('0.3', 'a361b57a5944dd00c8ad7960d0e6772e')
     version('0.2.2', '14ab88993995311f45e6927228fb8738')
@@ -40,15 +41,15 @@ class FccEdm(CMakePackage):
     version('0.2', 'fe014e238e8afc76523f2e1ada9bc087')
     version('develop', git='https://github.com/jlingema/fcc-edm.git', branch='master')
 
+    variant('build_type', default='Release',
+            description='The build type to build',
+            values=('Debug', 'Release'))
+
     depends_on('cmake', type='build')
+    depends_on('python', type='build')
+    depends_on('dag', when='@0.4:')
     depends_on('root')
     depends_on('podio')
-
-    def configure_args(self):
-        spec = self.spec
-        return [
-            '-DCMAKE_BUILD_TYPE:STRING=%s' ('Debug' if '+debug' in spec else 'Release')
-        ]
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDM', self.prefix)

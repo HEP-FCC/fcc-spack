@@ -33,20 +33,16 @@ class Podio(CMakePackage):
     url      = "https://github.com/HEP-FCC/podio/archive/v0.8.tar.gz"
 
     version('0.8', '07bf090649fc8e3b94e348e6b7fb8c7e')
-    version('0.7', '79e11c02c8d588f7b1dfc39b7de4eed9')
+    version('0.7', '79e11c02c8d588f7b1dfc39b7de4eed9', preferred=True)
     version('0.6', '1a1d2aa70fc16cce372ce10c3612c32d')
 
-    variant('debug', default=False, description='Build debug version')
+    variant('build_type', default='Release',
+            description='The build type to build',
+            values=('Debug', 'Release'))
 
     depends_on('root@6.08.06:')
     depends_on('python@2.7:')
-
-    def build_type(self):
-        spec = self.spec
-        if '+debug' in spec:
-            return 'Debug'
-        else:
-            return 'Release'
+    depends_on('py-pyyaml')
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('PODIO', self.prefix)
