@@ -45,7 +45,7 @@ class FccPhysics(CMakePackage):
     depends_on('fcc-edm')
     depends_on('podio')
     depends_on('hepmc')
-    depends_on('pythia')
+    depends_on('pythia8')
     depends_on('fastjet')
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
