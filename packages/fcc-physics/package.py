@@ -48,5 +48,8 @@ class FccPhysics(CMakePackage):
     depends_on('pythia8')
     depends_on('fastjet')
 
+    def setup_environment(self, spack_env, run_env):
+        spack_env.set('HEPMC_PREFIX', self.spec['hepmc'].prefix)
+
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCPHYSICS', self.prefix)
