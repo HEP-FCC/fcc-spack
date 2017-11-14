@@ -1,0 +1,15 @@
+- compiler:
+    environment:
+      set:
+        LD_LIBRARY_PATH: /cvmfs/sft.cern.ch/lcg/contrib/gcc/4.9.3/x86_64-slc6/lib64
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: scientificcernslc6
+    paths:
+      cc: /cvmfs/sft.cern.ch/lcg/contrib/gcc/4.9/x86_64-slc6-gcc49-opt/bin/gcc49
+      cxx: /cvmfs/sft.cern.ch/lcg/contrib/gcc/4.9/x86_64-slc6-gcc49-opt/bin/g++49
+      f77: /cvmfs/sft.cern.ch/lcg/contrib/gcc/4.9/x86_64-slc6-gcc49-opt/bin/gfortran49
+      fc: /cvmfs/sft.cern.ch/lcg/contrib/gcc/4.9/x86_64-slc6-gcc49-opt/bin/gfortran49
+    spec: gcc@4.9.3
+    target: x86_64
