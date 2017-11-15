@@ -9,7 +9,3 @@
     paths:
       cmake@3.5.2%gcc@6.2.0 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/CMake/3.5.2/x86_64-slc6-gcc62-opt
       cmake@3.5.2%gcc@4.9.3 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/CMake/3.5.2/x86_64-slc6-gcc49-opt
-  blas:
-    paths:
-      blas@20110419%gcc@6.2.0 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/blas/20110419-e1974/x86_64-slc6-gcc62-opt
-      blas@20110419%gcc@4.9.3 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/blas/20110419-e1974/x86_64-slc6-gcc49-opt
