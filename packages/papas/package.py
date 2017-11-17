@@ -34,6 +34,7 @@ class Papas(CMakePackage):
     url      = "https://github.com/HEP-FCC/papas/archive/1.2.0.tar.gz"
 
     version('1.2.0', '74d700ca5872872b2beda7e5862bfaa4')
+    version('develop', git='https://github.com/HEP-FCC/papas.git', branch='master')
 
     variant('build_type', default='Release',
             description='The build type to build',

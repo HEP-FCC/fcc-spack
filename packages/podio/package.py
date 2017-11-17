@@ -35,6 +35,7 @@ class Podio(CMakePackage):
     version('0.8', '07bf090649fc8e3b94e348e6b7fb8c7e')
     version('0.7', '79e11c02c8d588f7b1dfc39b7de4eed9', preferred=True)
     version('0.6', '1a1d2aa70fc16cce372ce10c3612c32d')
+    version('develop', git='https://github.com/HEP-FCC/podio.git', branch='master')
 
     variant('build_type', default='Release',
             description='The build type to build',
