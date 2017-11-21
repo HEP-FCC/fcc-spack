@@ -44,7 +44,7 @@ class Fccsw(CMakePackage):
     depends_on('gaudi')
     depends_on('geant4')
     depends_on('hepmc')
-    depends_on('pythia')
+    depends_on('pythia8')
     depends_on('root')
     depends_on('tbb')
 
