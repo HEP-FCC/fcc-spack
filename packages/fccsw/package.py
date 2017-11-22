@@ -40,13 +40,14 @@ class Fccsw(CMakePackage):
     depends_on('delphes')
     depends_on('fastjet')
     depends_on('fcc-edm')
-    depends_on('fcc-physics')  # only to have complete stack automatically
+    depends_on('fcc-physics')  # TEMP only to have complete stack automatically
     depends_on('gaudi')
     depends_on('geant4')
     depends_on('hepmc')
     depends_on('pythia8')
     depends_on('root')
     depends_on('tbb')
+    depends_on('acts-core') # TEMP only to have complete stack automatically
 
     def configure_args(self):
         spec = self.spec
