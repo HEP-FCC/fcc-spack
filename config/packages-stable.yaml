@@ -1,3 +1,5 @@
+  fccsw:
+    version: [0.5.1]
   fcc-edm:
     version: [0.5.1]
   papas:
@@ -6,3 +8,5 @@
     version: [0.7]
   fcc-physics:
     version: [0.2.1]
+  acts-core:
+    version: [0.05.02]
