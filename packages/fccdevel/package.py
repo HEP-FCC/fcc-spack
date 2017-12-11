@@ -41,7 +41,7 @@ class Fccdevel(PackageBase):
     depends_on('fastjet')
     depends_on('fcc-edm')
     depends_on('fcc-physics')
-    depends_on('gaudi')
+    #depends_on('gaudi')
     depends_on('geant4')
     depends_on('hepmc')
     depends_on('pythia8')
