@@ -48,6 +48,7 @@ class Fccdevel(PackageBase):
     depends_on('root')
     depends_on('tbb')
     depends_on('acts-core')
+    depends_on('papas')
     #depends_on('heppy') # As cmake package
 
     def build(self, spec, prefix):

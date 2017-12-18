@@ -47,6 +47,7 @@ class Fccsw(CMakePackage):
     depends_on('root')
     depends_on('tbb')
     depends_on('acts-core')
+    depends_on('papas')
 
     def configure_args(self):
         spec = self.spec
