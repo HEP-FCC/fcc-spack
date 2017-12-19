@@ -10,3 +10,5 @@
     version: [0.2.1]
   acts-core:
     version: [0.05.02]
+  gaudi:
+    version: [v28r2]
