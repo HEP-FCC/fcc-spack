@@ -25,7 +25,7 @@
 from spack import *
 
 
-class Podio(CMakePackage):
+class Podio(Package):
     """PODIO, or plain-old-data I/O, is a C++ library to support the creation
     and handling of data models in particle physics."""
 
@@ -41,9 +41,15 @@ class Podio(CMakePackage):
             description='The build type to build',
             values=('Debug', 'Release'))
 
+    depends_on('cmake')
     depends_on('root@6.08.06:')
     depends_on('python@2.7:')
     depends_on('py-pyyaml')
+
+   def install(self,spec, prefix):
+        cmake("-DCMAKE_INSTALL_PREFIX:PATH=%s" % prefix)
+        make()
+        make("install")
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('PODIO', self.prefix)
