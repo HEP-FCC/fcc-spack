@@ -46,7 +46,7 @@ class Podio(Package):
     depends_on('python@2.7:')
     depends_on('py-pyyaml')
 
-   def install(self,spec, prefix):
+    def install(self,spec, prefix):
         cmake("-DCMAKE_INSTALL_PREFIX:PATH=%s" % prefix)
         make()
         make("install")
