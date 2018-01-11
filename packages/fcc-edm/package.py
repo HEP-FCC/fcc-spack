@@ -45,13 +45,14 @@ class FccEdm(CMakePackage):
             description='The build type to build',
             values=('Debug', 'Release'))
 
-    conflicts('podio@0.8')
+    #conflicts('podio@0.8')
+    patch('operator.patch')
 
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag', when='@0.4:')
     depends_on('root')
-    depends_on('podio@0.7')
+    depends_on('podio')
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDM', self.prefix)

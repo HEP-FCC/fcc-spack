@@ -32,6 +32,7 @@ class ActsCore(CMakePackage):
     homepage = "https://gitlab.cern.ch/acts/acts-core"
     url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.05.02/archive.tar.gz"
 
+    version('0.05.03', '872272ff18b38a01fc3f7b5f33be9d01')
     version('0.05.02', 'c824e925145bbd316b892ebe0c1eddc3')
 
     depends_on('cmake@3.5:', type='build')
@@ -45,6 +46,12 @@ class ActsCore(CMakePackage):
     depends_on('graphviz@2.26.00:')
 
     conflicts("%gcc@:6.1")
+
+    patch('cmake.patch', when='@0.05.03')
+
+    def url_for_version(self, version):
+        url = "https://gitlab.cern.ch/acts/acts-core/repository"
+        return "{0}/v{1}/archive.tar.gz".format(url, version)
 
     def cmake_args(self):
         spec = self.spec
