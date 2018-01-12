@@ -35,7 +35,7 @@ class Fccstack(PackageBase):
 
     version('1.0', 'e2b724dfcc31d735897971db91be89ff')
 
-    depends_on('fcc-physics')
+    depends_on('fccdevel')
     depends_on('fccsw')
     #depends_on('heppy') # As cmake package
 
