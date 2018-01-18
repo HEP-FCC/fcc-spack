@@ -2,20 +2,15 @@
 +++ b/init.sh	2018-01-18 13:08:11.365743160 +0100
 @@ -1,12 +1,11 @@
 +THIS=$(dirname ${BASH_SOURCE[0]})
- 
+
 -export HEPPY=$PWD
 +export HEPPY=$THIS
  export PATH=$HEPPY/bin:$PATH
 -export PYTHONPATH=$PWD/..:$PYTHONPATH
 +export PYTHONPATH=$THIS/..:$PYTHONPATH
- 
+
  # set up executable directory
  # cp scripts/*.py bin/
  # cp scripts/heppy bin/
--chmod +x bin/*.py 
+-chmod +x bin/*.py
 -chmod +x bin/heppy
--
--
-+chmod +x $THIS/bin/*.py 
-+chmod +x $THIS/bin/heppy
-
