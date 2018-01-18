@@ -45,7 +45,7 @@ class Heppy(Package):
         source_directory = self.stage.source_path
 
         cp = which('cp')
-        mkdir('-p', '%s/lib/python2.7/site-packages' % prefix)
+        mkdirp('%s/lib/python2.7/site-packages' % prefix)
         cp('-r', source_directory, '%s/lib/python2.7/site-packages/heppy' % prefix)
 
         env['HEPPY'] = prefix + "/heppy"
