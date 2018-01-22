@@ -46,9 +46,6 @@ class FccEdm(CMakePackage):
             description='The build type to build',
             values=('Debug', 'Release'))
 
-    #conflicts('podio@0.8')
-    patch('operator.patch')
-
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag', when='@0.4:')
