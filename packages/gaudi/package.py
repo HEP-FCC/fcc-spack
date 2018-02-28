@@ -21,3 +21,4 @@ class Gaudi(CMakePackage):
     depends_on("intel-tbb")
     depends_on("gperftools")
     depends_on("heppdt")
+    depends_on('xerces-c')
