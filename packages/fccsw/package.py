@@ -50,6 +50,7 @@ class Fccsw(CMakePackage):
     depends_on('acts-core')
     depends_on('papas')
     depends_on('xerces-c')
+    depends_on('tricktrack')
 
     patch('permissions.patch', when='@0.9')
 
