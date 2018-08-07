@@ -32,6 +32,7 @@ class ActsCore(CMakePackage):
     homepage = "https://gitlab.cern.ch/acts/acts-core"
     url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.05.02/archive.tar.gz"
 
+    version('0.06.00', '7364779db21cbb39365e137672b75c74')
     version('0.05.03', '872272ff18b38a01fc3f7b5f33be9d01')
     version('0.05.02', 'c824e925145bbd316b892ebe0c1eddc3')
 
