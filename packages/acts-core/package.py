@@ -30,8 +30,9 @@ class ActsCore(CMakePackage):
     experiment-independent set of track reconstruction tools"""
 
     homepage = "https://gitlab.cern.ch/acts/acts-core"
-    url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.05.02/archive.tar.gz"
+    url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.07.00/archive.tar.gz"
 
+    version('0.07.00', '664872eed9bf7fd0fb8a9e882293738b')
     version('0.05.03', '872272ff18b38a01fc3f7b5f33be9d01')
     version('0.05.02', 'c824e925145bbd316b892ebe0c1eddc3')
 
