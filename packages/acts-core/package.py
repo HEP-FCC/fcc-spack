@@ -32,8 +32,7 @@ class ActsCore(CMakePackage):
     homepage = "https://gitlab.cern.ch/acts/acts-core"
     url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.07.00/archive.tar.gz"
 
-    version('0.07.00', '664872eed9bf7fd0fb8a9e882293738b')
-    version('0.06.00', '7364779db21cbb39365e137672b75c74')
+    version('0.07.01', '50813d45c6cd575f1174b5a1d8afe72d')
     version('0.05.03', '872272ff18b38a01fc3f7b5f33be9d01')
     version('0.05.02', 'c824e925145bbd316b892ebe0c1eddc3')
 
@@ -57,10 +56,23 @@ class ActsCore(CMakePackage):
 
     def cmake_args(self):
         spec = self.spec
-        args = [
-            "-DBUILD_DD4HEP_PLUGIN=ON",
-            "-DBUILD_MATERIAL_PLUGIN=on",
-            "-DBUILD_TGEO_PLUGIN=ON",
-            "-DEIGEN_INCLUDE_DIR=%s" % spec['eigen'].prefix + "/include/eigen3"
-        ]
+
+        if "@0.07" in spec:
+            args = [
+                "-DACTS_BUILD_IDENTIFICATION_PLUGIN=ON",
+                "-DACTS_BUILD_DIGITIZATION_PLUGIN=ON",
+                "-DACTS_BUILD_DD4HEP_PLUGIN=ON",
+                "-DACTS_BUILD_TGEO_PLUGIN=ON"
+                "-DACTS_BUILD_TESTS=OFF"
+            ]
+
+        else:
+            args = [
+                "-DBUILD_DD4HEP_PLUGIN=ON",
+                "-DBUILD_MATERIAL_PLUGIN=on",
+                "-DBUILD_TGEO_PLUGIN=ON"
+            ]
+
+        args.extend(["-DEIGEN_INCLUDE_DIR=%s" % spec['eigen'].prefix + "/include/eigen3"])
+
         return args
