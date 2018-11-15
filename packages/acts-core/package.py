@@ -49,6 +49,7 @@ class ActsCore(CMakePackage):
     conflicts("%gcc@:6.1")
 
     patch('cmake.patch', when='@0.05.03')
+    patch('cmake-TGEO.patch', when='@0.07.01')
 
     def url_for_version(self, version):
         url = "https://gitlab.cern.ch/acts/acts-core/repository"
