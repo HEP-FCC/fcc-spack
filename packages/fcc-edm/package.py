@@ -54,5 +54,12 @@ class FccEdm(CMakePackage):
     depends_on('root')
     depends_on('podio')
 
+    # Override pre-defined test step
+    # Multiple tests access to the same root file, thus we avoid parallel
+    # execution at this stage
+    def check(self):
+        with working_dir(self.build_directory):
+            make("test", "CTEST_OUTPUT_ON_FAIL=1")
+
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDM', self.prefix)
