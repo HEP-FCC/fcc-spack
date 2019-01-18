@@ -50,7 +50,7 @@ class FccEdm(CMakePackage):
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag', when='@0.4:')
-    depends_on('dag'. when='@develop')
+    depends_on('dag', when='@develop')
     depends_on('root')
     depends_on('podio')
 
