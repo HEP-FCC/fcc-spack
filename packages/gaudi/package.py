@@ -10,6 +10,11 @@ class Gaudi(CMakePackage):
     version('v28r1', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v28r1')
     version('v28r2', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v28r2')
     version('v29r2', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v29r2')
+    version('30.1', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r1')
+    version('30.2', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r2')
+    version('30.3', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r3')
+    version('30.4', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r4')
+    version('30.5', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r5')
 
     depends_on("python")
     depends_on("root")
@@ -22,3 +27,9 @@ class Gaudi(CMakePackage):
     depends_on("gperftools")
     depends_on("heppdt")
     depends_on('xerces-c')
+
+    depends_on('range-v3', when="@30.1:")
+    depends_on('relax', when="@30.1:")
+    depends_on('gsl', when="@30.1")
+
+    patch('rt.patch', when="@boost@1.69:")

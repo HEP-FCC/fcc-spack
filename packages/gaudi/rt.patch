@@ -1,0 +1,10 @@
+--- a/GaudiKernel/CMakeLists.txt.orig   2019-01-18 14:18:39.683008333 +0100
++++ b/GaudiKernel/CMakeLists.txt        2019-01-18 14:18:49.013083138 +0100
+@@ -59,7 +59,7 @@
+
+ #---Libraries---------------------------------------------------------------
+ gaudi_add_library(GaudiKernel src/Lib/*.cpp ${extra_sources}
+-                  LINK_LIBRARIES ${CMAKE_DL_LIBS} Boost ROOT TBB GaudiPluginService ${extra_libraries}
++                  LINK_LIBRARIES ${CMAKE_DL_LIBS} Boost ROOT TBB GaudiPluginService rt ${extra_libraries}
+                   INCLUDE_DIRS Boost ROOT TBB
+                   PUBLIC_HEADERS Gaudi GaudiKernel)
