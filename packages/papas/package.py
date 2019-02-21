@@ -40,10 +40,25 @@ class Papas(CMakePackage):
             description='The build type to build',
             values=('Debug', 'Release'))
 
+    variant('cxxstd',
+            default='11',
+            values=('14', '17'),
+            multi=False,
+	    description='Use the specified C++ standard when building.')
+
     depends_on('fcc-physics')
     depends_on('fcc-edm')
     depends_on('podio')
     depends_on('pythia8')
+
+
+    def cmake_args(self):
+	args = []
+
+	# C++ Standard
+        args.append('-DCMAKE_CXX_STANDARD=%s' % self.spec.variants['cxxstd'].value)
+
+	return args
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('PAPAS', self.prefix)

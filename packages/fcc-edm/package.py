@@ -47,12 +47,26 @@ class FccEdm(CMakePackage):
             description='The build type to build',
             values=('Debug', 'Release'))
 
+    variant('cxxstd',
+            default='11',
+            values=('14', '17'),
+            multi=False,
+	    description='Use the specified C++ standard when building.')
+
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag', when='@0.4:')
     depends_on('dag', when='@develop')
     depends_on('root')
     depends_on('podio')
+
+    def cmake_args(self):
+	args = []
+
+	# C++ Standard
+        args.append('-DCMAKE_CXX_STANDARD=%s' % self.spec.variants['cxxstd'].value)
+
+	return args
 
     # Override pre-defined test step
     # Multiple tests access to the same root file, thus we avoid parallel

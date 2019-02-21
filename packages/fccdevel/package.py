@@ -39,7 +39,11 @@ class Fccdevel(PackageBase):
     depends_on('dd4hep')
     depends_on('delphes')
     depends_on('fastjet')
-    depends_on('fcc-edm')
+
+    # LCG Releases built with gcc7 use C++17
+    depends_on('fcc-edm cxxstd=17', when="%gcc@7:")
+    depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
+
     depends_on('fcc-physics')
     depends_on('gaudi')
     depends_on('geant4')
@@ -48,7 +52,10 @@ class Fccdevel(PackageBase):
     depends_on('root')
     depends_on('tbb')
     depends_on('acts-core')
-    depends_on('papas')
+
+    # LCG Releases built with gcc7 use C++17
+    depends_on('papas cxxstd=17', when="%gcc@7:")
+    depends_on('papas cxxstd=14', when="%gcc@:6.99")
     depends_on('heppy')
     depends_on('tricktrack')
 
