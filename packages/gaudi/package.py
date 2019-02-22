@@ -33,3 +33,4 @@ class Gaudi(CMakePackage):
     depends_on('gsl', when="@30.1")
 
     patch('rt.patch', when="@boost@1.69:")
+    patch('cxx17.patch', when="%gcc@8:")
