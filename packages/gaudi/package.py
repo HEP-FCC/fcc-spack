@@ -28,9 +28,11 @@ class Gaudi(CMakePackage):
     depends_on("heppdt")
     depends_on('xerces-c')
 
-    depends_on('range-v3', when="@30.1:")
-    depends_on('relax', when="@30.1:")
-    depends_on('gsl', when="@30.1")
+    depends_on('range-v3' )
+    depends_on('relax')
+    depends_on('gsl')
 
-    patch('rt.patch', when="@boost@1.69:")
+    patch('rt.patch', when="@30.1: ^boost@1.67:")
+    patch('lcg95-gaudiv29v5.patch', when="@v29r2 ^boost@1.67:")
     patch('cxx17.patch', when="%gcc@8:")
+    patch('BoostAllPython.patch', when="^boost@1.67:")
