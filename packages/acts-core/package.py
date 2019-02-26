@@ -59,12 +59,13 @@ class ActsCore(CMakePackage):
     def cmake_args(self):
         spec = self.spec
 
-        if "@0.07" in spec:
+        if "@0.07:" in spec:
             args = [
                 "-DACTS_BUILD_IDENTIFICATION_PLUGIN=ON",
                 "-DACTS_BUILD_DIGITIZATION_PLUGIN=ON",
                 "-DACTS_BUILD_DD4HEP_PLUGIN=ON",
-                "-DACTS_BUILD_TGEO_PLUGIN=ON"
+                "-DACTS_BUILD_TGEO_PLUGIN=ON",
+                "-DACTS_BUILD_LEGACY=ON",
                 "-DACTS_BUILD_TESTS=OFF"
             ]
 

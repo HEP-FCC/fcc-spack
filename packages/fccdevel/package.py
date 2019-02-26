@@ -41,7 +41,7 @@ class Fccdevel(PackageBase):
     depends_on('fastjet')
 
     # LCG Releases built with gcc7 use C++17
-    depends_on('fcc-edm cxxstd=17', when="%gcc@7:")
+    depends_on('fcc-edm@develop cxxstd=17', when="%gcc@7:")
     depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
 
     depends_on('fcc-physics')
@@ -54,7 +54,7 @@ class Fccdevel(PackageBase):
     depends_on('acts-core')
 
     # LCG Releases built with gcc7 use C++17
-    depends_on('papas cxxstd=17', when="%gcc@7:")
+    depends_on('papas@develop cxxstd=17', when="%gcc@7:")
     depends_on('papas cxxstd=14', when="%gcc@:6.99")
     depends_on('heppy')
     depends_on('tricktrack')

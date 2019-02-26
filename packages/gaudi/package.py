@@ -35,4 +35,4 @@ class Gaudi(CMakePackage):
     patch('rt.patch', when="@30.1: ^boost@1.67:")
     patch('lcg95-gaudiv29v5.patch', when="@v29r2 ^boost@1.67:")
     patch('cxx17.patch', when="%gcc@8:")
-    patch('BoostAllPython.patch', when="^boost@1.67:")
+    patch('BoostAllPython.patch', when="@v29r2 ^boost@1.67:")

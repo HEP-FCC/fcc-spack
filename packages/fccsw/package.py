@@ -52,7 +52,12 @@ class Fccsw(CMakePackage):
     depends_on('xerces-c')
     depends_on('tricktrack')
 
+    depends_on('vdt')
+    depends_on('python')
+    depends_on('davix')
+
     patch('permissions.patch', when='@0.9')
+    patch('ddeve.patch')
 
     def setup_environment(self, spack_env, run_env):
         # Need to explicitly add DD4hep libs to the LD_LIBRARY_PATH since
@@ -60,15 +65,15 @@ class Fccsw(CMakePackage):
         spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['dd4hep'].prefix.lib)
 
         # Geant4 datasets
-        datadir='/cvmfs/geant4.cern.ch/share/data'
+	datadir="/cvmfs/geant4.cern.ch/share/data"
         spack_env.set('G4LEVELGAMMADATA', datadir + '/PhotonEvaporation3.2')
         spack_env.set('G4NEUTRONXSDATA', datadir + '/G4NEUTRONXS1.4')
         spack_env.set('G4LEDATA', datadir + '/G4EMLOW6.48')
         spack_env.set('G4NEUTRONHPDATA', datadir + '/G4NDL4.5')
-        spack_env.set('G4RADIOACTIVEDATA', datadir + '/RadioactiveDecay4.3')
-        spack_env.set('G4ABLADATA', datadir + '/G4ABLA3.0')
+        spack_env.set('G4RADIOACTIVEDATA', datadir + '/RadioactiveDecay5.2')
+        spack_env.set('G4ABLADATA', datadir + '/G4ABLA3.1')
         spack_env.set('G4PIIDATA', datadir + '/G4PII1.3')
         spack_env.set('G4SAIDXSDATA', datadir + '/G4SAIDDATA1.1')
-        spack_env.set('G4REALSURFACEDATA', datadir + '/RealSurface1.0')
+        spack_env.set('G4REALSURFACEDATA', datadir + '/RealSurface2.1.1')
         # Lower versions than G4ENSDFSTATE2.0 fail
-        spack_env.set('G4ENSDFSTATEDATA', datadir + '/G4ENSDFSTATE2.0')
+        spack_env.set('G4ENSDFSTATEDATA', datadir + '/G4ENSDFSTATE2.2')
