@@ -30,8 +30,9 @@ class Tricktrack(CMakePackage):
     used in CMSSW in a standalone library."""
 
     homepage = "https://cern.ch/tricktrack"
-    url      = "https://github.com/HEP-SF/TrickTrack/archive/v1.0.4.tar.gz"
+    url      = "https://github.com/HEP-SF/TrickTrack/archive/v1.0.6.tar.gz"
 
+    version('1.0.6', 'ef8cc9d5d9760935da2ef56aa98d9885')
     version('1.0.5', '65493aa89361c139c28f63b473459312')
     version('1.0.4', '7fefd2f94c4925d307897b483b9eb039')
     version('1.0.1', 'ec23cadf8b7fa4a343e513c7c988e27f')
