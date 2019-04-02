@@ -1,0 +1,12 @@
+  root:
+    paths:
+      root@6.08.06%gcc@6.2.0 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/ROOT/6.08.06/x86_64-slc6-gcc62-opt
+      root@6.08.06%gcc@4.9.3 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/ROOT/6.08.06/x86_64-slc6-gcc49-opt
+  python:
+    paths:
+      python@2.7.13%gcc@6.2.0 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/Python/2.7.13/x86_64-slc6-gcc62-opt
+      python@2.7.13%gcc@4.9.3 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/Python/2.7.13/x86_64-slc6-gcc49-opt
+  cmake:
+    paths:
+      cmake@3.5.2%gcc@6.2.0 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/CMake/3.5.2/x86_64-slc6-gcc62-opt
+      cmake@3.5.2%gcc@4.9.3 arch=linux-x86_64-slc6: /cvmfs/sft.cern.ch/lcg/releases/LCG_88/CMake/3.5.2/x86_64-slc6-gcc49-opt

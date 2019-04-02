@@ -1,0 +1,8 @@
+  fcc-edm:
+    version: [develop]
+  papas:
+    version: [develop]
+  podio:
+    version: [develop]
+  fcc-physics:
+    version: [develop]

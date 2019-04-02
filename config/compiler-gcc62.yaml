@@ -1,0 +1,15 @@
+- compiler:
+    environment:
+      set:
+        LD_LIBRARY_PATH: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2.0/x86_64-slc6/lib64
+    extra_rpaths: []
+    flags: {}
+    modules: []
+    operating_system: scientificcernslc6
+    paths:
+      cc: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2.0/x86_64-slc6-gcc62-opt/bin/gcc
+      cxx: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2.0/x86_64-slc6-gcc62-opt/bin/g++
+      f77: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2.0/x86_64-slc6-gcc62-opt/bin/gfortran
+      fc: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2.0/x86_64-slc6-gcc62-opt/bin/gfortran
+    spec: gcc@6.2.0
+    target: x86_64
