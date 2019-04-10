@@ -44,6 +44,7 @@ class Fccdevel(PackageBase):
     depends_on('fcc-edm@develop cxxstd=17', when="%gcc@7:")
     depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
 
+    depends_on('py-fcchhanalyses')
     depends_on('fcc-physics')
     depends_on('gaudi')
     depends_on('geant4')
