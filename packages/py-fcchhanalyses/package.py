@@ -31,7 +31,7 @@ class PyFcchhanalyses(PythonPackage):
     homepage = "https://github.com/HEP-FCC/FCChhAnalyses"
     git      = "https://github.com/HEP-FCC/FCChhAnalyses"
 
-    version('0.1.0', tag='v0.1.0')
+    version('0.1.1', tag='v0.1.1')
 
     depends_on('py-setuptools',   type='build')
     depends_on('py-wheel',        type='build')
