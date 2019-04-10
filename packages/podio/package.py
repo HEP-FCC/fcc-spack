@@ -30,10 +30,11 @@ class Podio(CMakePackage):
     and handling of data models in particle physics."""
 
     homepage = "https://github.com/HEP-FCC/podio"
-    url      = "https://github.com/HEP-FCC/podio/archive/v0.8.tar.gz"
+    url      = "https://github.com/HEP-FCC/podio/archive/v0.9.1.tar.gz"
 
+    version('0.9.1', '9e2b8cf6d2be46d74471ae4857bd7191', preferred=True)
     version('0.8', '07bf090649fc8e3b94e348e6b7fb8c7e')
-    version('0.7', '79e11c02c8d588f7b1dfc39b7de4eed9', preferred=True)
+    version('0.7', '79e11c02c8d588f7b1dfc39b7de4eed9')
     version('0.6', '1a1d2aa70fc16cce372ce10c3612c32d')
     version('develop', git='https://github.com/HEP-FCC/podio.git', branch='master')
 
