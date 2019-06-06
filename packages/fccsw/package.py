@@ -32,6 +32,7 @@ class Fccsw(CMakePackage):
     url      = "https://github.com/HEP-FCC/FCCSW/archive/v0.5.tar.gz"
 
     version('develop', git='https://github.com/HEP-FCC/FCCSW.git', branch='master')
+    version('0.10',   '40b75f42fb51934cdc3c52049226ac39')
     version('0.9',   'fbbfc1deeaab40757d05ebfcbfa7b0f5')
     version('0.5.1', 'e2e6e6fa40373c3a14ea823bb9bc0810')
     version('0.5', 'f2c849608ac1ab175f432a5e55dbe673')
@@ -57,7 +58,7 @@ class Fccsw(CMakePackage):
     depends_on('davix')
 
     patch('permissions.patch', when='@0.9')
-    patch('ddeve.patch')
+    patch('ddeve.patch', when='@0.9 ^dd4hep@01-08')
 
     def setup_environment(self, spack_env, run_env):
         # Need to explicitly add DD4hep libs to the LD_LIBRARY_PATH since
@@ -65,7 +66,7 @@ class Fccsw(CMakePackage):
         spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['dd4hep'].prefix.lib)
 
         # Geant4 datasets
-	datadir="/cvmfs/geant4.cern.ch/share/data"
+        datadir="/cvmfs/geant4.cern.ch/share/data"
         spack_env.set('G4LEVELGAMMADATA', datadir + '/PhotonEvaporation3.2')
         spack_env.set('G4NEUTRONXSDATA', datadir + '/G4NEUTRONXS1.4')
         spack_env.set('G4LEDATA', datadir + '/G4EMLOW6.48')
