@@ -36,3 +36,18 @@ class Gaudi(CMakePackage):
     patch('lcg95-gaudiv29v5.patch', when="@v29r2 ^boost@1.67:")
     patch('cxx17.patch', when="%gcc@8:")
     patch('BoostAllPython.patch', when="@v29r2 ^boost@1.67:")
+
+    def cmake_args(self):
+
+        spec = self.spec
+
+        options = []
+
+        if '^boost@1.69:' in spec:
+             options = [
+                 # Otherwise find_package(Boost) finds the wrong directories
+                 '-DBoost_NO_BOOST_CMAKE=TRUE',
+             ]
+
+        return options
+
