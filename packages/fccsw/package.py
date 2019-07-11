@@ -41,7 +41,11 @@ class Fccsw(CMakePackage):
     depends_on('dd4hep')
     depends_on('delphes')
     depends_on('fastjet')
-    depends_on('fcc-edm')
+
+    # LCG Releases built with gcc7 use C++17
+    depends_on('fcc-edm@0.5.4: cxxstd=17', when="%gcc@7:")
+    depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
+
     depends_on('gaudi')
     depends_on('geant4')
     depends_on('hepmc')
@@ -49,7 +53,11 @@ class Fccsw(CMakePackage):
     depends_on('root')
     depends_on('tbb')
     depends_on('acts-core')
-    depends_on('papas')
+
+    # LCG Releases built with gcc7 or higher require C++17
+    depends_on('papas@1.2.1: cxxstd=17', when="%gcc@7:")
+    depends_on('papas cxxstd=14', when="%gcc@:6.99")
+ 
     depends_on('xerces-c')
     depends_on('tricktrack')
 
