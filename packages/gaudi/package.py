@@ -15,26 +15,35 @@ class Gaudi(CMakePackage):
     version('30.3', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r3')
     version('30.4', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r4')
     version('30.5', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v30r5')
+    version('32.0', git='https://gitlab.cern.ch/gaudi/Gaudi.git', tag='v32r0')
 
+    # Minimal Gaudi build
+    depends_on("boost")
+    depends_on('cppgsl', when='@32.0:')
+    depends_on("intel-tbb")
+    depends_on("libuuid")
     depends_on("python")
+    depends_on('py-xenv@develop_2018-12-20:')
+    depends_on('range-v3' )
     depends_on("root")
+    depends_on("vdt", when="@32.0:, root@6.16:")
+    depends_on("zlib")
+    
+    # optional
     depends_on("py-qmtest")
     depends_on("clhep")
-    depends_on("boost")
     depends_on("cppunit")
     depends_on("aida")
-    depends_on("intel-tbb")
     depends_on("gperftools")
     depends_on("heppdt")
+
+    depends_on('gsl')
+    depends_on('relax')
     depends_on('xerces-c')
 
-    depends_on('range-v3' )
-    depends_on('relax')
-    depends_on('gsl')
-
-    patch('rt.patch', when="@30.1: ^boost@1.67:")
+    patch('rt.patch', when="@30.1:30.5 ^boost@1.67:")
     patch('lcg95-gaudiv29v5.patch', when="@v29r2 ^boost@1.67:")
-    patch('cxx17.patch', when="%gcc@8:")
+    patch('cxx17.patch', when="@:30.4 %gcc@8:")
     patch('BoostAllPython.patch', when="@v29r2 ^boost@1.67:")
 
     def cmake_args(self):
