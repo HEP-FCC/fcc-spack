@@ -52,7 +52,7 @@ class FccEdm(CMakePackage):
             default='14',
             values=('14', '17'),
             multi=False,
-	    description='Use the specified C++ standard when building.')
+            description='Use the specified C++ standard when building.')
 
     depends_on('cmake', type='build')
     depends_on('python', type='build')
@@ -61,13 +61,18 @@ class FccEdm(CMakePackage):
     depends_on('root')
     depends_on('podio')
 
+    # in LCG_96 ROOT is installed with an external xz rather than the builtin,
+    # so the genreflex binary needs to find it.
+    # As root is installed as an external package we cannot modify its
+    # setup_dependent_environment function to add the xz lib folder to the
+    # LD_LIBRARY_PATH hence we need to do it here.
+    depends_on('xz', when='^root@6.16:')
+
     def cmake_args(self):
-	args = []
-
-	# C++ Standard
+        args = []
+        # C++ Standard
         args.append('-DCMAKE_CXX_STANDARD=%s' % self.spec.variants['cxxstd'].value)
-
-	return args
+        return args
 
     # Override pre-defined test step
     # Multiple tests access to the same root file, thus we avoid parallel
@@ -75,6 +80,10 @@ class FccEdm(CMakePackage):
     def check(self):
         with working_dir(self.build_directory):
             make("test", "CTEST_OUTPUT_ON_FAIL=1")
+
+    def setup_environment(self, spack_env, run_env):
+        if 'xz' in self.spec:
+            spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDM', self.prefix)
