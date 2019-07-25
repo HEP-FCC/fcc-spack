@@ -28,9 +28,9 @@ class Gaudi(CMakePackage):
     depends_on("root")
     depends_on("vdt", when="@32.0:, root@6.16:")
     depends_on("zlib")
-    
+
     # optional
-    depends_on("py-qmtest")
+    # depends_on("py-qmtest")
     depends_on("clhep")
     depends_on("cppunit")
     depends_on("aida")
@@ -59,4 +59,3 @@ class Gaudi(CMakePackage):
              ]
 
         return options
-
