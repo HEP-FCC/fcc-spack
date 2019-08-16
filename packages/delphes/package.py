@@ -32,6 +32,7 @@ class Delphes(CMakePackage):
     homepage = "https://cp3.irmp.ucl.ac.be/projects/delphes"
     url      = "https://github.com/delphes/delphes/archive/3.4.1.tar.gz"
 
+    version('3.4.2pre18', '742eb7b75c58b3058bcf78d51ddca4c0')
     version('3.4.2pre05', '829f221135ec27afba2a1ac57da29858')
     version('3.4.1',      '630182fc0cf96c6ca0a96dcddc0f702e')
 
