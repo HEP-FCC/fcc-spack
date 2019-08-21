@@ -37,7 +37,10 @@ class Fccsw(CMakePackage):
     version('0.5.1', 'e2e6e6fa40373c3a14ea823bb9bc0810')
     version('0.5', 'f2c849608ac1ab175f432a5e55dbe673')
 
-    depends_on('cmake', type='build')
+    variant('lcg', default=True, description="Installed against an LCG Release")
+
+    depends_on('acts-core')
+    depends_on('clhep')
     depends_on('dd4hep')
     depends_on('delphes')
     depends_on('fastjet')
@@ -49,21 +52,23 @@ class Fccsw(CMakePackage):
     depends_on('gaudi')
     depends_on('geant4')
     depends_on('hepmc')
-    depends_on('pythia8')
-    depends_on('root')
-    depends_on('tbb')
-    depends_on('acts-core')
+    depends_on('heppdt')
 
     # LCG Releases built with gcc7 or higher require C++17
     depends_on('papas@1.2.1: cxxstd=17', when="%gcc@7:")
     depends_on('papas cxxstd=14', when="%gcc@:6.99")
- 
-    depends_on('xerces-c')
-    depends_on('tricktrack')
 
-    depends_on('vdt')
-    depends_on('python')
-    depends_on('davix')
+    depends_on('podio')
+    depends_on('pythia8')
+    depends_on('root')
+    depends_on('tbb')
+
+    depends_on('tricktrack')
+    depends_on('xerces-c')
+
+    depends_on('vdt', when="+lcg")
+    depends_on('python', when="+lcg")
+    depends_on('davix', when="+lcg")
 
     patch('permissions.patch', when='@0.9')
     patch('ddeve.patch', when='@0.9 ^dd4hep@01-08')
