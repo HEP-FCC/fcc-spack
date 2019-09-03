@@ -82,6 +82,7 @@ class Gaudi(CMakePackage):
 
         compiler_labels = {
             "gcc@8.2.0": "gcc8",
+            "gcc@8.3.0": "gcc8",
             "gcc@6.2.0": "gcc62"
         }
 
