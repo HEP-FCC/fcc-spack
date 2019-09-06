@@ -59,6 +59,7 @@ class Fccdevel(PackageBase):
     depends_on('papas cxxstd=14', when="%gcc@:6.99")
     depends_on('heppy')
     depends_on('tricktrack')
+    depends_on('guinea-pig')
 
     def build(self, spec, prefix):
         pass
