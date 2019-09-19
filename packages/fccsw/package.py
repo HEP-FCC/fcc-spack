@@ -33,6 +33,7 @@ class Fccsw(CMakePackage):
     url      = "https://github.com/HEP-FCC/FCCSW/archive/v0.5.tar.gz"
 
     version('develop', git='https://github.com/HEP-FCC/FCCSW.git', branch='master')
+    version('0.11', 'e3b5aa8f396cffae745305801eb8f7a38a8a7881')
     version('0.10',   '40b75f42fb51934cdc3c52049226ac39')
     version('0.9',   'fbbfc1deeaab40757d05ebfcbfa7b0f5')
     version('0.5.1', 'e2e6e6fa40373c3a14ea823bb9bc0810')
