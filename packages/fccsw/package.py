@@ -39,6 +39,10 @@ class Fccsw(CMakePackage):
     version('0.5.1', 'e2e6e6fa40373c3a14ea823bb9bc0810')
     version('0.5', 'f2c849608ac1ab175f432a5e55dbe673')
 
+    variant('build_type', default='Release',
+            description='CMake build type',
+            values=('Debug', 'Release', 'RelWithDebInfo', 'MinSizeRel'))
+
     variant('lcg', default=True, description="Installed against an LCG Release")
     variant('cxxstd',
             default='17',

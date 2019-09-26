@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright (c) 2013-2017, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2013-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory.
 #
 # This file is part of Spack.
@@ -22,48 +22,43 @@
 # License along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##############################################################################
+#
+# This is a template package file for Spack.  We've put "FIXME"
+# next to all the things you'll want to change. Once you've handled
+# them, you can save this file and test your package like this:
+#
+#     spack install fcc-edm-legacy
+#
+# You can edit this file again by typing:
+#
+#     spack edit fcc-edm-legacy
+#
+# See the Spack documentation for more information on packaging.
+# If you submit this package back to Spack as a pull request,
+# please first remove this boilerplate and all FIXME comments.
+#
 from spack import *
-from spack.package import PackageBase
 
-class Fccdevel(PackageBase):
-    """Dummy package to install the FCC software development environment."""
 
-    phases = ['build', 'install']
-    build_system_class = 'BundlePackage'
+class FccEdmLegacy(CMakePackage):
+    """FCCEDM"""
 
-    url = 'https://github.com/citibeth/dummy/tarball/v1.0'
+    """Event data model of FCC"""
 
-    version('1.0', 'e2b724dfcc31d735897971db91be89ff')
+    homepage = "https://github.com/HEP-FCC/fcc-edm-legacy"
+    url      = "https://github.com/HEP-FCC/fcc-edm-legacy/archive/v0.1.0.zip"
+
+    version('0.1.0', '97a4bdfb355980f6556f9dc032f23e62')
+
+    variant('build_type', default='Release',
+            description='The build type to build',
+            values=('Debug', 'Release'))
 
     depends_on('cmake', type='build')
-    depends_on('dd4hep')
-    depends_on('delphes')
-    depends_on('fastjet')
-
-    # LCG Releases built with gcc7 use C++17
-    depends_on('fcc-edm@0.5.4: cxxstd=17', when="%gcc@7:")
-    depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
-    depends_on('fcc-edm-legacy')
-
-    depends_on('py-fcchhanalyses')
-    depends_on('fcc-physics')
-    depends_on('gaudi')
-    depends_on('geant4')
-    depends_on('hepmc')
-    depends_on('pythia8')
+    depends_on('python', type='build')
+    depends_on('dag')
     depends_on('root')
-    depends_on('tbb')
-    depends_on('acts-core')
+    depends_on('podio')
 
-    # LCG Releases built with gcc7 use C++17
-    depends_on('papas@1.2.1: cxxstd=17', when="%gcc@7:")
-    depends_on('papas cxxstd=14', when="%gcc@:6.99")
-    depends_on('heppy')
-    depends_on('tricktrack')
-    depends_on('guinea-pig')
-
-    def build(self, spec, prefix):
-        pass
-
-    def install(self, spec, prefix):
-        pass
+    def setup_dependent_environment(self, spack_env, run_env, dspec):
+        spack_env.set('FCCEDMLEGACY', self.prefix)
