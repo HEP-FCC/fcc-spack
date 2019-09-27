@@ -22,21 +22,6 @@
 # License along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 ##############################################################################
-#
-# This is a template package file for Spack.  We've put "FIXME"
-# next to all the things you'll want to change. Once you've handled
-# them, you can save this file and test your package like this:
-#
-#     spack install fcc-edm-legacy
-#
-# You can edit this file again by typing:
-#
-#     spack edit fcc-edm-legacy
-#
-# See the Spack documentation for more information on packaging.
-# If you submit this package back to Spack as a pull request,
-# please first remove this boilerplate and all FIXME comments.
-#
 from spack import *
 
 
@@ -59,6 +44,24 @@ class FccEdmLegacy(CMakePackage):
     depends_on('dag')
     depends_on('root')
     depends_on('podio')
+
+    # in LCG_96 ROOT is installed with an external xz rather than the builtin,
+    # so the genreflex binary needs to find it.
+    # As root is installed as an external package we cannot modify its
+    # setup_dependent_environment function to add the xz lib folder to the
+    # LD_LIBRARY_PATH hence we need to do it here.
+    depends_on('xz', when='^root@6.16:')
+
+    # Override pre-defined test step
+    # Multiple tests access to the same root file, thus we avoid parallel
+    # execution at this stage
+    def check(self):
+        with working_dir(self.build_directory):
+            make("test", "CTEST_OUTPUT_ON_FAIL=1")
+    
+    def setup_environment(self, spack_env, run_env):
+        if 'xz' in self.spec:
+            spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDMLEGACY', self.prefix)
