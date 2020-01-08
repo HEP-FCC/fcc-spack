@@ -30,8 +30,9 @@ class FccEdm(CMakePackage):
     """Event data model of FCC"""
 
     homepage = "https://github.com/HEP-FCC/fcc-edm"
-    url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.5.1.tar.gz"
+    url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.5.5.tar.gz"
 
+    version('0.5.5', sha256='63863123606f64421a8118e3a71155293ad8fed852cf2be91b68cdb8bcab80be')
     version('0.5.4', '236206ca4e00f239d574bfcd6aa44b53')
     version('0.5.3', 'ce4e041c795a22e7a6b4558ebe5a9545')
     version('0.5.2', '8f17139fae2bbc14fca88843791be9c3')
@@ -82,6 +83,9 @@ class FccEdm(CMakePackage):
             make("test", "CTEST_OUTPUT_ON_FAIL=1")
 
     def setup_environment(self, spack_env, run_env):
+	# needed for genreflex
+    	spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
+    	run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
         if 'xz' in self.spec:
             spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
 
