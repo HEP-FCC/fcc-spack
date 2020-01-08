@@ -32,7 +32,7 @@ class FccEdm(CMakePackage):
     homepage = "https://github.com/HEP-FCC/fcc-edm"
     url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.5.5.tar.gz"
 
-    version('0.5.5', sha256='63863123606f64421a8118e3a71155293ad8fed852cf2be91b68cdb8bcab80be')
+    version('0.5.5', sha256='a07a2f1304ce08a6d9819200c77e4a739f1e96f2ebb59715ebc27992e6a014e0')
     version('0.5.4', '236206ca4e00f239d574bfcd6aa44b53')
     version('0.5.3', 'ce4e041c795a22e7a6b4558ebe5a9545')
     version('0.5.2', '8f17139fae2bbc14fca88843791be9c3')

@@ -33,7 +33,7 @@ class FccEdmLegacy(CMakePackage):
     homepage = "https://github.com/HEP-FCC/fcc-edm-legacy"
     url      = "https://github.com/HEP-FCC/fcc-edm-legacy/archive/v0.1.0.zip"
 
-    version('0.1.1', sha256='12a545ded9bacf4780d934d6174691fee57ec1992342510ff2e4c605cc87014b')
+    version('0.1.1', sha256='9891db983dab116c63f665402ca746c2bc9bd034f4c3185b9cacd7f8115707a5')
     version('0.1.0', '97a4bdfb355980f6556f9dc032f23e62')
 
     variant('build_type', default='Release',
