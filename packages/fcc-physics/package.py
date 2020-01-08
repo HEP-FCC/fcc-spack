@@ -32,7 +32,8 @@ class FccPhysics(CMakePackage):
     homepage = "https://github.com/HEP-FCC/fcc-physics/"
     url      = "https://github.com/HEP-FCC/fcc-physics/archive/v0.1.tar.gz"
 
-    version('0.2.1', '93aeb48160d8fc5ae18e3568dd4f34b4', preferred=True)
+    version('0.2.2', sha256='6e2bca1fc51e52cd70329056395cf0ebe5c660642f3ab57d98b03140cdbacdd4')
+    version('0.2.1', '93aeb48160d8fc5ae18e3568dd4f34b4')
     version('0.1.1', '8136978e23b5b9438646868f8e81d037')
     version('0.1', '89e4f57d0dc9335e2ad6ed796c5e2600')
     version('develop', git='https://github.com/HEP-FCC/fcc-physics.git', branch='master')
@@ -56,6 +57,8 @@ class FccPhysics(CMakePackage):
     depends_on('xz', when='^root@6.16:')
 
     def setup_environment(self, spack_env, run_env):
+    	spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
+    	run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
         spack_env.set('HEPMC_PREFIX', self.spec['hepmc'].prefix)
         if 'xz' in self.spec:
             spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)

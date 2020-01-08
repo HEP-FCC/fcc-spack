@@ -32,6 +32,7 @@ class Heppy(Package):
     homepage = ""
     url      = "heppy"
 
+    version('2.1', git='https://github.com/HEP-FCC/heppy.git', tag='v2.1')
     version('2.0', git='https://github.com/HEP-FCC/heppy.git', tag='v2.0')
     version('develop', git='https://github.com/HEP-FCC/heppy.git')
 
@@ -40,7 +41,7 @@ class Heppy(Package):
     depends_on('root')
     depends_on('python@2.6:')
 
-    patch('init.patch')
+    #patch('init.patch')
 
     def install(self, spec, prefix):
         source_directory = self.stage.source_path
