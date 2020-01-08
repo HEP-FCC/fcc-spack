@@ -60,6 +60,9 @@ class FccEdmLegacy(CMakePackage):
             make("test", "CTEST_OUTPUT_ON_FAIL=1")
     
     def setup_environment(self, spack_env, run_env):
+	# needed for genreflex
+    	spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
+    	run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
         if 'xz' in self.spec:
             spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
 
