@@ -30,12 +30,9 @@ class ActsCore(CMakePackage):
     experiment-independent set of track reconstruction tools"""
 
     homepage = "https://gitlab.cern.ch/acts/acts-core"
-    url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.07.00/archive.tar.gz"
+    url      = "https://gitlab.cern.ch/acts/acts-core/repository/v0.08.01/archive.tar.gz"
 
-    version('0.08.01', sha256='7c000f3d1f870d32d807f13791ec7fa46c0094819acbf6eb11e374520a07bc5b')
-    version('0.07.01', '50813d45c6cd575f1174b5a1d8afe72d')
-    version('0.05.03', '872272ff18b38a01fc3f7b5f33be9d01')
-    version('0.05.02', 'c824e925145bbd316b892ebe0c1eddc3')
+    version('0.10.05')
 
     depends_on('cmake@3.5:', type='build')
     depends_on('boost@1.62:')
@@ -49,8 +46,8 @@ class ActsCore(CMakePackage):
 
     conflicts("%gcc@:6.1")
 
-    patch('cmake.patch', when='@0.05.03')
-    patch('cmake-TGEO.patch', when='@0.07.01')
+    #patch('cmake.patch', when='@0.05.03')
+    #patch('cmake-TGEO.patch', when='@0.07.01')
 
     def url_for_version(self, version):
         url = "https://gitlab.cern.ch/acts/acts-core/repository"
