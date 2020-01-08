@@ -31,8 +31,9 @@ class Papas(CMakePackage):
     test the performance of detector design."""
 
     homepage = "https://github.com/HEP-FCC/papas"
-    url      = "https://github.com/HEP-FCC/papas/archive/1.2.1.tar.gz"
+    url      = "https://github.com/HEP-FCC/papas/archive/1.2.2.tar.gz"
 
+    version('1.2.2', sha256='0f469d54eec726fdf654892a98720696499be0cf73db266e9715b01cb6c9c60c')
     version('1.2.1', '78f34649bd7b82aa1e8eb27b69dae8d1')
     version('1.2.0', '74d700ca5872872b2beda7e5862bfaa4')
     version('develop', git='https://github.com/HEP-FCC/papas.git', branch='master')

@@ -32,7 +32,7 @@ class Fccsw(CMakePackage):
     homepage = "https://github.com/HEP-FCC/FCCSW/"
     url      = "https://github.com/HEP-FCC/FCCSW/archive/v0.5.tar.gz"
 
-    version('develop', git='https://github.com/HEP-FCC/FCCSW.git', branch='master')
+    version('develop', git='https://github.com/vvolkl/FCCSW.git', branch='fix-newacts-spack')
     version('0.11', 'e3b5aa8f396cffae745305801eb8f7a38a8a7881')
     version('0.10',   '40b75f42fb51934cdc3c52049226ac39')
     version('0.9',   'fbbfc1deeaab40757d05ebfcbfa7b0f5')
@@ -50,7 +50,7 @@ class Fccsw(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    depends_on('acts-core')
+    depends_on('acts_core')
     depends_on('clhep')
     depends_on('dd4hep')
     depends_on('delphes')
@@ -58,7 +58,7 @@ class Fccsw(CMakePackage):
     depends_on('fastjet')
 
     # LCG Releases built with gcc7 use C++17
-    depends_on('fcc-edm@0.5.4: cxxstd=17', when="%gcc@7:")
+    depends_on('fcc-edm@0.5.5: cxxstd=17', when="%gcc@7:")
     depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
 
     depends_on('gaudi')
@@ -67,7 +67,7 @@ class Fccsw(CMakePackage):
     depends_on('heppdt')
 
     # LCG Releases built with gcc7 or higher require C++17
-    depends_on('papas@1.2.1: cxxstd=17', when="%gcc@7:")
+    depends_on('papas@1.2.2: cxxstd=17', when="%gcc@7:")
     depends_on('papas cxxstd=14', when="%gcc@:6.99")
 
     depends_on('podio')
@@ -75,7 +75,7 @@ class Fccsw(CMakePackage):
     depends_on('root')
     depends_on('tbb')
 
-    depends_on('tricktrack')
+    #depends_on('tricktrack')
     depends_on('xerces-c')
 
     depends_on('vdt', when="+lcg")
