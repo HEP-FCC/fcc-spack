@@ -32,7 +32,8 @@ class Fccsw(CMakePackage):
     homepage = "https://github.com/HEP-FCC/FCCSW/"
     url      = "https://github.com/HEP-FCC/FCCSW/archive/v0.5.tar.gz"
 
-    version('develop', git='https://github.com/vvolkl/FCCSW.git', branch='fix-newacts-spack')
+    version('develop', git='https://github.com/vvolkl/FCCSW.git', branch='master')
+    version('0.12', git='https://github.com/vvolkl/FCCSW.git', tag="v0.12")
     version('0.11', 'e3b5aa8f396cffae745305801eb8f7a38a8a7881')
     version('0.10',   '40b75f42fb51934cdc3c52049226ac39')
     version('0.9',   'fbbfc1deeaab40757d05ebfcbfa7b0f5')
