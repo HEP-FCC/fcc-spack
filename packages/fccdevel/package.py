@@ -61,6 +61,7 @@ class Fccdevel(PackageBase):
     depends_on('heppy')
     #depends_on('tricktrack')
     depends_on('guinea-pig')
+    depends_on('fccsw')
 
     def build(self, spec, prefix):
         pass
