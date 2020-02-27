@@ -30,9 +30,9 @@ class Podio(CMakePackage):
     and handling of data models in particle physics."""
 
     homepage = "https://github.com/AIDASOFT/podio"
-    url      = "https://github.com/AIDASOFT/podio"
+    url      = "https://github.com/AIDASoft/podio/archive/v00-09-02.tar.gz"
 
-    version('00-09-02', sha256='8234d1b9636029124235ef81199a1220968dcc7fdaeab81cdc96a47af332d240', preferred=True)
+    version('00-09-02', sha256='8234d1b9636029124235ef81199a1220968dcc7fdaeab81cdc96a47af332d240',  extension='tar.gz', preferred=True)
     version('00-09', sha256='3cde67556b6b76fd2d004adfaa3b3b6173a110c0c209792bfdb5f9353e21076f')
     version('00-08', sha256='9d035a7f5ebfae5279a17405003206853271af692f762e2bac8e73825f2af327')
     version('develop', git='https://github.com/AIDASOFT/podio.git', branch='master')
@@ -52,6 +52,7 @@ class Podio(CMakePackage):
     depends_on('python@2.7:')
     depends_on('py-pyyaml')
     depends_on('tbb')
+    depends_on('davix', when='@:00-09')
 
     def cmake_args(self):
         args = []
