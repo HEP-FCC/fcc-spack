@@ -25,7 +25,7 @@
 
 from spack import *
 
-class Heppy(Package):
+class Heppy(PythonPackage):
     """High Energy Physics with PYthon (HEPPY) is a modular python framework
     for the analysis of collision events."""
 
@@ -36,21 +36,16 @@ class Heppy(Package):
     version('2.0', git='https://github.com/HEP-FCC/heppy.git', tag='v2.0')
     version('develop', git='https://github.com/HEP-FCC/heppy.git')
 
+
+    depends_on('py-setuptools',   type='build')
+    depends_on('py-wheel',        type='build')
     depends_on('py-pyyaml')
     depends_on('py-gitpython')
     depends_on('root')
-    depends_on('python@2.6:')
+    depends_on('python@2.7')
 
-    #patch('init.patch')
-
-    def install(self, spec, prefix):
-        source_directory = self.stage.source_path
-
-        cp = which('cp')
-        mkdirp('%s/lib/python2.7/site-packages' % prefix)
-        cp('-r', source_directory, '%s/lib/python2.7/site-packages/heppy' % prefix)
-
-        env['HEPPY'] = prefix + "/heppy"
+    def install_args(self, spec, prefix):
+        return ['--prefix={0}'.format(prefix), '--root=/']
 
     def setup_environment(self, spack_env, run_env):
         run_env.set('HEPPY', self.prefix + "/heppy")
