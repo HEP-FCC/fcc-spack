@@ -57,6 +57,7 @@ class Podio(CMakePackage):
         args = []
         # C++ Standard
         args.append('-DCMAKE_CXX_STANDARD=%s' % self.spec.variants['cxxstd'].value)
+        args.append('-DBUILD_TESTING=OFF')
         return args
 
     # in LCG_96 ROOT is installed with an external xz rather than the builtin,
@@ -73,9 +74,12 @@ class Podio(CMakePackage):
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('PODIO', self.prefix)
 
-    def setup_environment(self, spack_env, run_env):
-	# needed for genreflex
-    	spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
-    	run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
-        if 'xz' in self.spec:
-            spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
+    def setup_build_environment(self, build_env):
+      build_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
+      if 'xz' in self.spec:
+         build_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
+
+    def setup_run_environment(self, run_env):
+      run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
+      if 'xz' in self.spec:
+         spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
