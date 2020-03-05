@@ -95,7 +95,9 @@ class Fccsw(CMakePackage):
     def setup_environment(self, spack_env, run_env):
         # Need to explicitly add DD4hep libs to the LD_LIBRARY_PATH since
         # some cmake files (MakeGaudiMap.cmake) only rely on this variable
+        print "GAUDIi:", self.spec['gaudi'].prefix + "/lib/python2.7/site-packages/"
         spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['dd4hep'].prefix.lib)
+        spack_env.prepend_path('PYTHONPATH', "/cvmfs/sft.cern.ch/lcg/releases/xenv/1.0.0-25c02/x86_64-centos7-gcc8-opt/lib/python2.7/site-packages/")
 
         # Gaudi automatically detects the processor if BINARY_TAG is not defined
         # in the environment. This leads to an error detecting a 'broadwell'

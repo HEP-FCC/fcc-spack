@@ -39,36 +39,49 @@ class Dd4hep(CMakePackage):
     version('00.16', '4df618f2f7b10f0e995d7f30214f0850')
     version('00.15', 'cf0b50903e37c30f2361318c79f115ce')
 
+    version("develop", git="https://github.com/AIDASoft/DD4hep.git", branch="master")
+
+    variant('cxxstd',
+            default='17',
+            values=('14', '17'),
+            multi=False,
+            description='Use the specified C++ standard when building.')
+
+    variant('lcg',
+            default=False,
+            description='Built against an lcg release')
+
     depends_on('cmake', type='build')
     depends_on('boost')
     depends_on('xerces-c')
     depends_on('geant4')
     depends_on('root')
+    depends_on('tbb', when="+lcg")
+    depends_on('davix', when='+lcg')
+    depends_on('gl2ps', when='+lcg')
+    depends_on('libpng', when='+lcg')
 
     def cmake_args(self):
         spec = self.spec
+        args = []
 
-        options = []
 
-        # Set the correct compiler flag
-        if self.compiler.cxx11_flag:
-            options.extend(['-DDD4HEP_USE_CXX11=ON'])
-        if self.compiler.cxx14_flag:
-            options.extend(['-DDD4HEP_USE_CXX14=ON'])
-        if self.compiler.cxx17_flag:
-            options.extend(['-DDD4HEP_USE_CXX17=ON'])
 
-        options.extend([
+        args.extend([
             '-DROOTSYS=%s' % spec['root'].prefix,
             '-DDD4HEP_USE_GEANT4=ON',
             '-DDD4HEP_USE_XERCESC=ON',
-            '-DXERCESC_ROOT_DIR=%s' % spec['xerces-c'].prefix
+            '-DXERCESC_ROOT_DIR=%s' % spec['xerces-c'].prefix,
+            '-DCMAKE_CXX_STANDARD=%s' % spec.variants['cxxstd'].value,
         ])
 
-        return options
+        return args
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('DD4hep_DIR', self.prefix)
+
+    def setup_build_environment(self, build_env):
+      build_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
 
     def url_for_version(self, version):
         url = "https://github.com/AIDASoft/DD4hep/archive/v{0}.tar.gz"
