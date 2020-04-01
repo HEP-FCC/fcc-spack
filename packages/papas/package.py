@@ -38,4 +38,4 @@ class Papas(CMakePackage):
       return args
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
-        spack_env.set('PAPAS', self.prefix)
+      spack_env.set('PAPAS', self.prefix)

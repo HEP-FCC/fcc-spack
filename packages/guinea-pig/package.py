@@ -22,25 +22,24 @@ class GuineaPig(Package):
     depends_on('fftw@3.0.0:', when="+fftw3")
 
     def install(self, spec, prefix):
-	if '+fftw2' in spec:
-            configure("--prefix=%s" % prefix,
+      if '+fftw2' in spec:
+          configure("--prefix=%s" % prefix,
                       "-enable-fftw2",
                       "-with-fftwdir=%s" % spec['fftw'])
-        elif '+fftw3' in spec:
+      elif '+fftw3' in spec:
             configure("--prefix=%s" % prefix,
                       "-enable-fftw3",
                       "-with-fftwdir=%s" % spec['fftw'].prefix)
-        else:
+      else:
             configure('--prefix=%s' % prefix)
-	
-        make()
-        make('install')
+  
+      make()
+      make('install')
 
     def cmake_args(self):
-        args = []
-
-        if '+fftw2' in self.spec:
-            args.append('-enable-fftw2')
+      args = []
+      if '+fftw2' in self.spec:
+        args.append('-enable-fftw2')
 
         if '+fftw3' in self.spec:
             args.append("-enable-fftw3")
