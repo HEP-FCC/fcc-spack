@@ -41,8 +41,8 @@ class FccEdmLegacy(CMakePackage):
       # needed for genreflex
       spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
       run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
-        if 'xz' in self.spec:
-          spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
+      if 'xz' in self.spec:
+        spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDMLEGACY', self.prefix)
