@@ -60,18 +60,18 @@ class Tricktrack(CMakePackage):
     patch('findeigen.patch', when="@1.0.4")
 
     def cmake_args(self):
-	spec = self.spec
+  spec = self.spec
 
-	args = [
-	    '-Dtricktrack_documentation:BOOL=%s' % (
-		'ON' if '+documentation' in spec else 'OFF'),
-	    '-Dtricktrack_python:BOOL=%s' % (
-		'ON' if '+python' in spec else 'OFF'),
-	]
+  args = [
+      '-Dtricktrack_documentation:BOOL=%s' % (
+    'ON' if '+documentation' in spec else 'OFF'),
+      '-Dtricktrack_python:BOOL=%s' % (
+    'ON' if '+python' in spec else 'OFF'),
+  ]
 
-	if '+logger' in spec:
-	    args.extend(['-DUSE_SPDLOG'])
-	if '+logger_standalone' in spec:
-	    args.extend(['-DUSE_SPDLOG_STANDALONE'])
+  if '+logger' in spec:
+      args.extend(['-DUSE_SPDLOG'])
+  if '+logger_standalone' in spec:
+      args.extend(['-DUSE_SPDLOG_STANDALONE'])
 
-	return args
+  return args
