@@ -6,7 +6,9 @@ class FccEdm(CMakePackage):
 
     homepage = "https://github.com/HEP-FCC/fcc-edm"
     url      = "https://github.com/HEP-FCC/fcc-edm/archive/v0.5.5.tar.gz"
+    git =      "https://github.com/HEP-FCC/fcc-edm.git"
 
+    version('master', branch='master')
     version('0.5.5', sha256='a07a2f1304ce08a6d9819200c77e4a739f1e96f2ebb59715ebc27992e6a014e0')
     version('0.5.4', '236206ca4e00f239d574bfcd6aa44b53')
     version('0.5.3', 'ce4e041c795a22e7a6b4558ebe5a9545')
@@ -18,7 +20,6 @@ class FccEdm(CMakePackage):
     version('0.2.2', '14ab88993995311f45e6927228fb8738')
     version('0.2.1', 'c68d0ab3c07d7f5c885b6d2be7a3be74')
     version('0.2', 'fe014e238e8afc76523f2e1ada9bc087')
-    version('develop', git='https://github.com/HEP-FCC/fcc-edm.git', branch='master')
 
     variant('build_type', default='Release',
             description='The build type to build',
@@ -32,17 +33,9 @@ class FccEdm(CMakePackage):
 
     depends_on('cmake', type='build')
     depends_on('python', type='build')
-    depends_on('dag', when='@0.4:')
-    depends_on('dag', when='@develop')
+    depends_on('dag')
     depends_on('root')
-    depends_on('podio')
-
-    # in LCG_96 ROOT is installed with an external xz rather than the builtin,
-    # so the genreflex binary needs to find it.
-    # As root is installed as an external package we cannot modify its
-    # setup_dependent_environment function to add the xz lib folder to the
-    # LD_LIBRARY_PATH hence we need to do it here.
-    depends_on('xz', when='^root@6.16:')
+    depends_on('podio@:0.9.2')
 
     def cmake_args(self):
         args = []
@@ -59,10 +52,7 @@ class FccEdm(CMakePackage):
 
     def setup_environment(self, spack_env, run_env):
       # needed for genreflex
-      spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
-      run_env.prepend_path('LD_LIBRARY_PATH', self.spec['root'].prefix.lib)
-      if 'xz' in self.spec:
-        spack_env.prepend_path('LD_LIBRARY_PATH', self.spec['xz'].prefix.lib)
+      pass
 
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('FCCEDM', self.prefix)
