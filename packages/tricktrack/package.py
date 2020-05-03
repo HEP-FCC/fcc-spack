@@ -1,27 +1,3 @@
-##############################################################################
-# Copyright (c) 2013-2017, Lawrence Livermore National Security, LLC.
-# Produced at the Lawrence Livermore National Laboratory.
-#
-# This file is part of Spack.
-# Created by Todd Gamblin, tgamblin@llnl.gov, All rights reserved.
-# LLNL-CODE-647188
-#
-# For details, see https://github.com/spack/spack
-# Please also see the NOTICE and LICENSE files for our notice and the LGPL.
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License (as
-# published by the Free Software Foundation) version 2.1, February 1999.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the IMPLIED WARRANTY OF
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the terms and
-# conditions of the GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public
-# License along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-##############################################################################
 from spack import *
 
 
@@ -30,17 +6,17 @@ class Tricktrack(CMakePackage):
     used in CMSSW in a standalone library."""
 
     homepage = "https://cern.ch/tricktrack"
-    url      = "https://github.com/HEP-SF/TrickTrack/archive/v1.0.8.tar.gz"
-    git      = "https://github.com/HEP-SF/TrickTrack.git"
+    url      = "https://github.com/HSF/TrickTrack/archive/v1.0.8.tar.gz"
+    git      = "https://github.com/HSF/TrickTrack.git"
 
-    version('develop', branch='master')
-    version('1.0.8', '014561e6be35f9b858dad8f9158c4746')
-    version('1.0.7', '93573819088d0dee7c3a260d7c8a8a61')
-    version('1.0.6', 'ef8cc9d5d9760935da2ef56aa98d9885')
-    version('1.0.5', '65493aa89361c139c28f63b473459312')
-    version('1.0.4', '7fefd2f94c4925d307897b483b9eb039')
-    version('1.0.1', 'ec23cadf8b7fa4a343e513c7c988e27f')
-    version('0.1',   'a75c6e2c7d7df5b713aa087827503e3c')
+    version('master', branch='master')
+    version('1.0.9', sha256='988cedbb28ec8f5cc95b762aa8a38e36d75cfc47bd009c9dc4ef365e9751b80d')
+    version('1.0.8', sha256='fe5f8d178f8a0a28ac423ad6e9c449772ba547ec3ef7e365c4644d9b5b44cf85')
+    version('1.0.7', sha256='e567de7c3c6e8096bd77873ac59fc4667661cdb380d089dcd6443a9d9834f3ef')
+    version('1.0.6', sha256='c7c5d6c492f65acd020a600664c5fa75c5caf9de33bb392f46771abad7650398')
+    version('1.0.5', sha256='5fe3f9ac523ca2381b11aef57057ec75b85aa9ee0a3fb6bac4710d2c76961692')
+    version('1.0.4', sha256='de4b1245a94e0905bcb9387e4a3b675298de916e631d3136f32ac1ab9e01855d')
+    version('1.0.1', sha256='4b7fbd3734a5ef30a3abecaf7b15318a1856ff31fac822775035e00669dc921d')
 
     variant('documentation',     default=False, 
             description='Build doxygen documentation')

@@ -2,14 +2,12 @@ from spack import *
 from spack.package import PackageBase
 
 class Fccdevel(PackageBase):
-    """Dummy package to install the FCC software development environment."""
+    """Bundle package to install the FCC software development environment."""
 
-    phases = ['build', 'install']
-    build_system_class = 'BundlePackage'
 
-    url = 'https://github.com/citibeth/dummy/tarball/v1.0'
+    version('1.0')
 
-    version('1.0', 'e2b724dfcc31d735897971db91be89ff')
+    maintainers = ['vvolkl']
 
     depends_on('cmake', type='build')
     depends_on('dd4hep')
@@ -39,8 +37,3 @@ class Fccdevel(PackageBase):
     depends_on('guinea-pig')
     depends_on('fccsw')
 
-    def build(self, spec, prefix):
-        pass
-
-    def install(self, spec, prefix):
-        pass
