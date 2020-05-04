@@ -9,6 +9,7 @@ class FccEdm(CMakePackage):
     git =      "https://github.com/HEP-FCC/fcc-edm.git"
 
     version('master', branch='master')
+    version('0.5.6', sha256='aaf4ff58dfbdf9dfc3f755ad8b14d5e5701ed875f4031b1f7538deaf0f027705')
     version('0.5.5', sha256='a07a2f1304ce08a6d9819200c77e4a739f1e96f2ebb59715ebc27992e6a014e0')
     version('0.5.4', '236206ca4e00f239d574bfcd6aa44b53')
     version('0.5.3', 'ce4e041c795a22e7a6b4558ebe5a9545')
@@ -36,8 +37,9 @@ class FccEdm(CMakePackage):
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag')
-    depends_on('root')
-    depends_on('podio@:0.9.2')
+    depends_on('root@6.08:')
+    depends_on('podio@:0.9.2', when='@:0.5.5')
+    depends_on('podio@0.10.0:', when='@0.5.6:')
 
     def cmake_args(self):
         args = []
@@ -51,10 +53,3 @@ class FccEdm(CMakePackage):
     def check(self):
         with working_dir(self.build_directory):
             make("test", "CTEST_OUTPUT_ON_FAIL=1")
-
-    def setup_environment(self, spack_env, run_env):
-      # needed for genreflex
-      pass
-
-    def setup_dependent_environment(self, spack_env, run_env, dspec):
-        spack_env.set('FCCEDM', self.prefix)
