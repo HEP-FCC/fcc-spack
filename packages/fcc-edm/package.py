@@ -31,6 +31,8 @@ class FccEdm(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
+    patch('cpack.patch')
+
     depends_on('cmake', type='build')
     depends_on('python', type='build')
     depends_on('dag')
