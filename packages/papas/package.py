@@ -26,7 +26,6 @@ class Papas(CMakePackage):
             multi=False,
       description='Use the specified C++ standard when building.')
 
-    depends_on('fcc-physics')
     depends_on('fcc-edm')
     depends_on('podio')
     depends_on('pythia8')

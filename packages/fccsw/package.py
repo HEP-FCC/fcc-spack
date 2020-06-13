@@ -27,34 +27,31 @@ class Fccsw(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    depends_on('acts-core')
+    #depends_on("key4hep-stack", when="@0.13:")
+    #depends_on('acts', when="@0.13:")
+    depends_on('acts@0.10.5 +identification +dd4hep +tgeo +digitization', when="@0.12:")
     depends_on('clhep')
-    depends_on('dd4hep')
+    depends_on('dd4hep +geant4')
     depends_on('delphes')
-    depends_on('gl2ps')
     depends_on('fastjet')
 
-    # LCG Releases built with gcc7 use C++17
-    depends_on('fcc-edm@0.5.5: cxxstd=17', when="%gcc@7:")
-    depends_on('fcc-edm cxxstd=14', when="%gcc@:6.99")
+    depends_on('fcc-edm@0.5.5', when="@:0.12")
+    depends_on('fcc-edm@0.5.6', when="@0.13:")
 
-    depends_on('gaudi')
+    depends_on('gaudi', when="@0.13:")
+    depends_on('gaudi@32.2', when="@:0.12")
     depends_on('geant4')
-    depends_on('hepmc')
-    depends_on('heppdt')
+    depends_on('hepmc@:2.99.99')
+    depends_on('heppdt@:2.99.99')
 
-    # LCG Releases built with gcc7 or higher require C++17
-    depends_on('papas@1.2.2: cxxstd=17', when="%gcc@7:")
-    depends_on('papas cxxstd=14', when="%gcc@:6.99")
+    depends_on('papas', when="@:0.12")
 
-    depends_on('podio')
-    depends_on('pythia8')
+    depends_on('podio@0.9.2', when="@:0.12")
+    depends_on('podio@0.10.0', when="@0.13:")
+    depends_on('pythia8', when="@:0.12")
+    depends_on('evtgen+pythia8', when="@0.13:")
     depends_on('root')
-    depends_on('tbb')
 
-    # tricktrack is yet to be refactored (currently included in fccsw)
-    #depends_on('tricktrack')
-    depends_on('xerces-c')
 
 
     patch('permissions.patch', when='@0.9')
@@ -64,5 +61,7 @@ class Fccsw(CMakePackage):
         args = []
         # C++ Standard
         args.append('-DCMAKE_CXX_STANDARD=%s' % self.spec.variants['cxxstd'].value)
+        if self.spec.satisfies('^gaudi@:33.99'):
+          args.append('-DHOST_BINARY_TAG=x86_64-linux-gcc9-opt')
         return args
     

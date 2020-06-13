@@ -21,7 +21,7 @@ class FccPhysics(CMakePackage):
     depends_on('cmake', type='build')
     depends_on('fcc-edm')
     depends_on('podio')
-    depends_on('hepmc')
+    depends_on('hepmc@:2.99.99')
     depends_on('pythia8')
     depends_on('fastjet')
 
