@@ -5,7 +5,7 @@ class Fccsw(CMakePackage):
     """software framework of the FCC project"""
     homepage = "https://github.com/HEP-FCC/FCCSW/"
     url      = "https://github.com/HEP-FCC/FCCSW/archive/v0.5.tar.gz"
-    git      = "https://github.com/HEP-FCC/FCCSW.git"
+    git      = "https://github.com/vvolkl/FCCSW.git"
 
     maintainers = ['vvolkl']
 
@@ -29,6 +29,7 @@ class Fccsw(CMakePackage):
 
     #depends_on("key4hep-stack", when="@0.13:")
     #depends_on('acts', when="@0.13:")
+
     depends_on('acts@0.10.5 +identification +dd4hep +tgeo +digitization', when="@0.12:")
     depends_on('clhep')
     depends_on('dd4hep +geant4')
@@ -40,7 +41,7 @@ class Fccsw(CMakePackage):
 
     depends_on('gaudi', when="@0.13:")
     depends_on('gaudi@32.2', when="@:0.12")
-    depends_on('geant4')
+    depends_on('geant4@10.6.1')
     depends_on('hepmc@:2.99.99')
     depends_on('heppdt@:2.99.99')
 
@@ -51,6 +52,9 @@ class Fccsw(CMakePackage):
     depends_on('pythia8', when="@:0.12")
     depends_on('evtgen+pythia8', when="@0.13:")
     depends_on('root')
+
+    depends_on("g4ensdfstate")
+
 
 
 
@@ -64,4 +68,10 @@ class Fccsw(CMakePackage):
         if self.spec.satisfies('^gaudi@:33.99'):
           args.append('-DHOST_BINARY_TAG=x86_64-linux-gcc9-opt')
         return args
-    
+
+    def setup_build_environment(self, spack_env):
+        spack_env.set('G4ENSDFSTATEDATA', self.spec["g4ensdfstate"].prefix + "/share/data/G4ENSDFSTATE2.2/")
+
+    def setup_run_environment(self, spack_env):
+        spack_env.prepend_path('PYTHONPATH', self.prefix.python)
+        spack_env.prepend_path("PATH", self.prefix.scripts)
