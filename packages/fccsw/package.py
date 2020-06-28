@@ -54,6 +54,10 @@ class Fccsw(CMakePackage):
     depends_on('evtgen+pythia8', when="@0.13:")
     depends_on('root')
 
+
+    depends_on("K4FWCore", when="@0.13:")
+    depends_on("edm4hep", when="@0.13:")
+
     depends_on("g4ensdfstate")
 
 
