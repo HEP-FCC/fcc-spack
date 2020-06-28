@@ -41,7 +41,8 @@ class Fccsw(CMakePackage):
 
     depends_on('gaudi', when="@0.13:")
     depends_on('gaudi@32.2', when="@:0.12")
-    depends_on('geant4@10.6.1')
+    depends_on('geant4', when='@0.13:')
+    depends_on('geant4@10.6.1', when='@:0.12')
     depends_on('hepmc@:2.99.99')
     depends_on('heppdt@:2.99.99')
 
