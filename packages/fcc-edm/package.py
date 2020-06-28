@@ -53,3 +53,6 @@ class FccEdm(CMakePackage):
     def check(self):
         with working_dir(self.build_directory):
             make("test", "CTEST_OUTPUT_ON_FAIL=1")
+
+    def setup_run_environment(self, spack_env):
+        spack_env.prepend_path('ROOT_INCLUDE_PATH', self.prefix.include.datamodel)
